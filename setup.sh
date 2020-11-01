@@ -66,3 +66,15 @@ sudo systemctl daemon-reload
 sudo systemctl start tomcat
 
 sudo systemctl enable tomcat
+
+
+# Install Firefox
+
+sudo apt install -y firefox
+
+# Install Chrome
+
+wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+
+sudo apt -y install ./google-chrome-stable_current_amd64.deb
+
