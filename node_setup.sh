@@ -92,15 +92,15 @@ sudo apt install -y docker-ce docker-ce-cli containerd.io
 
 # Install Kubernetes
 
-sudo swapoff -a
+#sudo swapoff -a
 
-sudo apt install -y apt-transport-https
+#sudo apt install -y apt-transport-https
 
-sudo curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -
+#sudo curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -
 
-sudo bash -c 'echo "deb https://apt.kubernetes.io/ kubernetes-xenial main" > /etc/apt/sources.list.d/kubernetes.list'
+#sudo bash -c 'echo "deb https://apt.kubernetes.io/ kubernetes-xenial main" > /etc/apt/sources.list.d/kubernetes.list'
 
-sudo apt update
+#sudo apt update
 
-sudo apt install -y kubelet kubeadm kubectl
+#sudo apt install -y kubelet kubeadm kubectl
 
