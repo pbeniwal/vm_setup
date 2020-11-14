@@ -20,10 +20,9 @@
 ![Install Plugins](images/PluginsInstall.png)
 
 #####	Specify various values (e.g. user and password as admin) and click on Save and Continue. 
- 
+![Admin User](images/AdminUser.png)
 
 #####		Click on Save and Finish:
-
- 
+![Admin User](images/SaveFinish.png)
 
 #####		Click on “Start using Jenkins”
