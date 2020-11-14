@@ -6,7 +6,7 @@
 
 #####	Below screen would get opened
 
- 
+ ![Unlock Jenkins] (images/UnlockJenkins.png)
 
 	Copy the contents of file using command “sudo cat <file_name_with_path> 
 
