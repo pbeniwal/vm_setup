@@ -47,4 +47,10 @@
   
   sudo chown $(id -u):$(id -g) $HOME/.kube/config
 
-
+  curl https://docs.projectcalico.org/manifests/calico.yaml -O
+  
+  kubectl apply -f calico.yaml
+  
+  ##### Command to get token for joining node
+  
+  sudo kubeadm token create --print-join-command
