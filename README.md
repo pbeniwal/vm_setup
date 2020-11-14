@@ -2,7 +2,7 @@
 
 #####	Open Chrome/firefox and go to (See to it that firewall rules on cloud  network allow port 8080):
 
-<public IP of VM>:8080
+{public IP of VM}:8080
 
 * Below screen would get opened
 
