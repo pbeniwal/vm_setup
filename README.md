@@ -33,3 +33,5 @@
 ![Admin User](images/SaveFinish.png)
 
 *	Click on “Start using Jenkins”
+
+![Start Jenkins](images/JenkinsReady.png"
