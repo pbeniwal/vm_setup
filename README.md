@@ -51,6 +51,6 @@
   
   kubectl apply -f calico.yaml
   
-  ##### Command to get token for joining node
+#### Command to get token for joining node
   
   sudo kubeadm token create --print-join-command
