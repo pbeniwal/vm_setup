@@ -67,7 +67,6 @@ sudo systemctl start tomcat
 
 sudo systemctl enable tomcat
 
-
 # Install Firefox
 
 sudo apt install -y firefox
@@ -90,24 +89,56 @@ sudo apt update
 
 sudo apt install -y docker-ce docker-ce-cli containerd.io
 
+# Install Docker Compose
+
+sudo apt install -y docker-compose
 
 # Install Kubernetes
 
-#sudo swapoff -a 
+sudo swapoff -a 
 
-#sudo apt install -y apt-transport-https
+sudo apt install -y apt-transport-https
 
-#sudo curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add - 
+sudo curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add - 
 
-#sudo bash -c 'echo "deb https://apt.kubernetes.io/ kubernetes-xenial main" > /etc/apt/sources.list.d/kubernetes.list'
+sudo bash -c 'echo "deb https://apt.kubernetes.io/ kubernetes-xenial main" > /etc/apt/sources.list.d/kubernetes.list'
 
-#sudo apt update
+sudo apt update
 
-#sudo apt install -y kubelet kubeadm kubectl
+sudo apt install -y kubelet kubeadm kubectl
 
-#sudo kubeadm init --pod-network-cidr=192.168.0.0/16
+sudo kubeadm init --pod-network-cidr=192.168.0.0/16
 
-#curl https://docs.projectcalico.org/manifests/calico.yaml -O
+curl https://docs.projectcalico.org/manifests/calico.yaml -O
 
-#kubectl apply -f calico.yaml
+kubectl apply -f calico.yaml
 
+# Install Puppet
+
+sudo sh -c 'echo `hostname -I`  puppet >> /etc/hosts'
+
+wget https://apt.puppetlabs.com/puppet6-release-bionic.deb 
+
+wget https://apt.puppet.com/puppet-tools-release-bionic.deb
+
+sudo dpkg -i puppet-tools-release-bionic.deb puppet6-release-bionic.deb 
+
+sudo apt update
+
+sudo apt install -y puppetserver pdk
+
+sudo /opt/puppetlabs/bin/puppetserver ca setup
+
+sudo systemctl start puppetserver
+
+sudo systemctl enable puppetserver
+
+sudo systemctl stop puppet
+
+sudo systemctl disable puppet
+
+# Install Ansible
+
+sudo apt-add-repository --yes --update ppa:ansible/ansible
+
+sudo apt -y install ansible
