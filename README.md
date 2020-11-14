@@ -14,9 +14,11 @@
 ![Specify Password](images/CopyPassword.png)
  
 *	Click on “Install suggested plugins”
+
 ![Install Plugins](images/InstallPlugins.png)
 
 *		Let the below screen finish all installations
+
 ![Install Plugins](images/PluginsInstall.png)
 
 *	Specify various values (e.g. user and password as admin) and click on Save and Continue. 
