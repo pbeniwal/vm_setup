@@ -4,7 +4,7 @@
 
 <public IP of VM>:8080
 
-#####	Below screen would get opened
+* Below screen would get opened
 
 ![Unlock Jenkins](images/UnlockJenkins.png)
 
