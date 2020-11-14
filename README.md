@@ -34,4 +34,4 @@
 
 *	Click on “Start using Jenkins”
 
-![Start Jenkins](images/JenkinsReady.png"
+![Start Jenkins](images/JenkinsReady.png)
