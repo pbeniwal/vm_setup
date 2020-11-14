@@ -1,1 +1,36 @@
+### Steps to Install Jenkins
 
+#####	Open Chrome/firefox and go to (See to it that firewall rules on cloud  network allow port 8080):
+
+<public IP of VM>:8080
+
+#####	Below screen would get opened
+
+ 
+
+	Copy the contents of file using command “sudo cat <file_name_with_path> 
+
+ 
+
+	Specify the copied password in appropriate column and click continue
+
+ 
+	Click on “Install suggested plugins”
+
+ 
+
+	Let the below screen finish all installations
+ 
+
+	Specify various values (e.g. user and password as admin) and click on Save and Continue. 
+ 
+
+	Click on Save and Finish:
+
+ 
+
+	Click on “Start using Jenkins”
+
+ 
+
+	Now initial setup is done and let’s move to additional setup
