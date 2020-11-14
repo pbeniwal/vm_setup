@@ -35,3 +35,16 @@
 *	Click on “Start using Jenkins”
 
 ![Start Jenkins](images/JenkinsReady.png)
+
+
+==========================================================================================
+
+#### For Kubernetes run below command as regular user on Master
+
+  mkdir -p $HOME/.kube
+  
+  sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+  
+  sudo chown $(id -u):$(id -g) $HOME/.kube/config
+
+
