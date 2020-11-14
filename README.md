@@ -6,31 +6,25 @@
 
 #####	Below screen would get opened
 
- ![Unlock Jenkins] (images/UnlockJenkins.png)
+ ![Unlock Jenkins](images/UnlockJenkins.png)
 
-	Copy the contents of file using command “sudo cat <file_name_with_path> 
+#####	Copy the contents of file using command “sudo cat <file_name_with_path> 
+
+#####	Specify the copied password in appropriate column and click continue
+
+ 
+#####	Click on “Install suggested plugins”
 
  
 
-	Specify the copied password in appropriate column and click continue
-
- 
-	Click on “Install suggested plugins”
-
+#####		Let the below screen finish all installations
  
 
-	Let the below screen finish all installations
+#####	Specify various values (e.g. user and password as admin) and click on Save and Continue. 
  
 
-	Specify various values (e.g. user and password as admin) and click on Save and Continue. 
- 
-
-	Click on Save and Finish:
+#####		Click on Save and Finish:
 
  
 
-	Click on “Start using Jenkins”
-
- 
-
-	Now initial setup is done and let’s move to additional setup
+#####		Click on “Start using Jenkins”
