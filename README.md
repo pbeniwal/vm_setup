@@ -36,8 +36,13 @@
 
 ![Start Jenkins](images/JenkinsReady.png)
 
+===========================================================================================================================
 
-==========================================================================================
+#### For Docker to run without sudo run below command as regular user and it will be effective only after reboot of the VM
+
+sudo usermod -aG docker $USER
+
+==============================================================================================================================
 
 #### For Kubernetes run below command as regular user on Master
 
