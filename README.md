@@ -1,4 +1,4 @@
-### Steps to Install Jenkins
+### Steps to Install Jenkins on master
 
 #####	Open Chrome/firefox and go to (See to it that firewall rules on cloud  network allow port 8080):
 
@@ -56,6 +56,27 @@ sudo usermod -aG docker $USER
   
   kubectl apply -f calico.yaml
   
-#### Command to get token for joining node
+#### Command to get token for joining node and use it in subsequent command on node
   
   sudo kubeadm token create --print-join-command
+  
+#### For Kubernetes run output of above command on Node machine
+
+  
+
+#### Update /etc/hosts file on puppet node machine with ip of puppet master
+
+  sudo nano /etc/hosts
+
+  <internal_ip_of_master_vm> puppet
+
+#### Run below command on puppet node machine for sending certificate request to master
+
+  sudo /opt/puppetlabs/bin/puppet agent --test
+  
+#### Run below command on puppet master machine for setting up puppet node
+
+  sudo /opt/puppetlabs/bin/puppetserver ca list
+  
+  sudo /opt/puppetlabs/bin/puppetserver ca sign --all
+
