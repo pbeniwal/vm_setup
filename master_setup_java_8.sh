@@ -109,7 +109,7 @@ sudo apt update
 
 sudo apt install -y kubelet kubeadm kubectl
 
-sudo kubeadm init --pod-network-cidr=192.168.0.0/16
+# sudo kubeadm init --pod-network-cidr=192.168.0.0/16
 
 # curl https://docs.projectcalico.org/manifests/calico.yaml -O
 
