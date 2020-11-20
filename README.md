@@ -62,7 +62,7 @@ sudo usermod -aG docker $USER
   
 #### For Kubernetes run output of above command on Node machine
 
-  
+  ![Kubernetes Join](images/KubernetesJoin.PNG)
 
 #### Update /etc/hosts file on puppet node machine with ip of puppet master
 
