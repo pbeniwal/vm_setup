@@ -84,3 +84,6 @@ sudo usermod -aG docker $USER
   
   sudo /opt/puppetlabs/bin/puppetserver ca sign --all
 
+#### Run below command on nagios master machine for setting up password of nagiosadmin
+
+  sudo htpasswd -c /usr/local/nagios/etc/htpasswd.users nagiosadmin
