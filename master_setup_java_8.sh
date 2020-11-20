@@ -8,6 +8,8 @@ sudo apt -y install openjdk-8-jdk
 
 sudo apt -y install maven
 
+sudo sh -c 'echo `hostname -I`  puppet >> /etc/hosts'
+
 # Installing Jenkins
 
 wget -q -O - https://pkg.jenkins.io/debian-stable/jenkins.io.key | sudo apt-key add -
@@ -114,8 +116,6 @@ sudo kubeadm init --pod-network-cidr=192.168.0.0/16
 # kubectl apply -f calico.yaml
 
 # Install Puppet
-
-sudo sh -c 'echo `hostname -I`  puppet >> /etc/hosts'
 
 wget https://apt.puppetlabs.com/puppet6-release-bionic.deb 
 
