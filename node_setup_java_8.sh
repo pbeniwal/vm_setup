@@ -1,5 +1,12 @@
 #!/bin/bash
 
+if [ -f myfile ]; then
+       echo "The startup script has already run so skipping"
+       exit 0
+fi
+
+touch myfile
+
 sudo apt update
 
 sudo apt -y upgrade
