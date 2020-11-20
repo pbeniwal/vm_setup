@@ -143,3 +143,75 @@ sudo apt-add-repository --yes --update ppa:ansible/ansible
 
 sudo apt -y install ansible
 
+# Install Puppet
+
+sudo apt install -y build-essential apache2 php php-gd libgd-dev unzip
+
+useradd nagios
+
+groupadd nagcmd
+
+usermod -a -G nagcmd nagios
+
+usermod -a -G nagios,nagcmd www-data
+
+wget https://assets.nagios.com/downloads/nagioscore/releases/nagios-4.4.6.tar.gz
+
+tar -xzf nagios*.tar.gz
+
+cd nagios-4.4.6
+
+./configure --with-nagios-group=nagios --with-command-group=nagcmd
+
+make all
+
+make install
+
+make install-commandmode
+
+make install-init
+
+make install-config
+
+/usr/bin/install -c -m 644 sample-config/httpd.conf /etc/apache2/sites-available/nagios.conf
+
+cp -R contrib/eventhandlers/ /usr/local/nagios/libexec/
+
+chown -R nagios:nagios /usr/local/nagios/libexec/eventhandlers
+
+cd ..
+
+wget https://nagios-plugins.org/download/nagios-plugins-2.3.3.tar.gz
+tar -xzf nagios-plugins*.tar.gz
+
+cd nagios-plugins-2.3.3
+
+./configure --with-nagios-user=nagios --with-nagios-group=nagios --with-openssl
+
+make
+
+make install
+
+sudo sh -c 'cp /usr/local/nagios/etc/nagios.cfg /usr/local/nagios/etc/nagios.cfg_bak ; sed "s/#cfg_dir=\/usr\/local\/nagios\/etc\/servers/cfg_dir=\/usr\/local\/nagios\/etc\/servers/g" /usr/local/nagios/etc/nagios.cfg_bak > /usr/local/nagios/etc/nagios.cfg'
+
+sudo sh -c 'cp /usr/local/nagios/etc/nagios.cfg /usr/local/nagios/etc/nagios.cfg_bak1 ; sed "s/service_freshness_check_interval=60/service_freshness_check_interval=6/g" /usr/local/nagios/etc/nagios.cfg_bak1 > /usr/local/nagios/etc/nagios.cfg'
+
+sudo sh -c 'cp /usr/local/nagios/etc/cgi.cfg /usr/local/nagios/etc/cgi.cfg_bak ; sed "s/refresh_rate=90/refresh_rate=5/g" /usr/local/nagios/etc/cgi.cfg_bak > /usr/local/nagios/etc/cgi.cfg'
+
+sudo sh -c 'cp /usr/local/nagios/etc/objects/localhost.cfg /usr/local/nagios/etc/objects/localhost.cfg_bak ; sed "s/check_local_users\!20\!50/check_local_users\!2\!5/g" /usr/local/nagios/etc/objects/localhost.cfg_bak > /usr/local/nagios/etc/objects/localhost.cfg'
+
+mkdir -p /usr/local/nagios/etc/servers
+
+a2enmod rewrite
+
+a2enmod cgi
+
+ln -s /etc/apache2/sites-available/nagios.conf /etc/apache2/sites-enabled/
+
+sudo apt install -y libxml-xpath-perl
+
+service apache2 restart
+
+service nagios restart
+
+systemctl enable nagios.service
