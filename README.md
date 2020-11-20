@@ -60,6 +60,8 @@ sudo usermod -aG docker $USER
   
   sudo kubeadm token create --print-join-command
   
+  ![Kubernetes Join](images/KubeToken.png)
+  
 #### For Kubernetes run output of above command on Node machine
 
   ![Kubernetes Join](images/KubernetesJoin.PNG)
