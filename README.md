@@ -46,6 +46,8 @@ sudo usermod -aG docker $USER
 
 #### For Kubernetes run below command as regular user on Master
 
+  sudo kubeadm init --pod-network-cidr=192.168.0.0/16
+  
   mkdir -p $HOME/.kube
   
   sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
