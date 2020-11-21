@@ -122,7 +122,7 @@ sudo swapoff -a
 
 sudo apt install -y apt-transport-https
 
-sudo curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add - 
+sudo curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add - 
 
 sudo bash -c 'echo "deb https://apt.kubernetes.io/ kubernetes-xenial main" > /etc/apt/sources.list.d/kubernetes.list'
 
@@ -162,7 +162,9 @@ sudo systemctl disable puppet
 
 # Install Ansible
 
-sudo apt-add-repository --yes --update ppa:ansible/ansible
+#sudo apt-add-repository --yes --update ppa:ansible/ansible
+
+sudo apt update
 
 sudo apt -y install ansible
 
@@ -170,13 +172,13 @@ sudo apt -y install ansible
 
 sudo apt install -y build-essential apache2 php php-gd libgd-dev unzip
 
-useradd nagios
+sudo useradd nagios
 
-groupadd nagcmd
+sudo groupadd nagcmd
 
-usermod -a -G nagcmd nagios
+sudo usermod -a -G nagcmd nagios
 
-usermod -a -G nagios,nagcmd www-data
+sudo usermod -a -G nagios,nagcmd www-data
 
 wget https://assets.nagios.com/downloads/nagioscore/releases/nagios-4.4.6.tar.gz
 
@@ -198,9 +200,9 @@ make install-config
 
 /usr/bin/install -c -m 644 sample-config/httpd.conf /etc/apache2/sites-available/nagios.conf
 
-cp -R contrib/eventhandlers/ /usr/local/nagios/libexec/
+sudo cp -R contrib/eventhandlers/ /usr/local/nagios/libexec/
 
-chown -R nagios:nagios /usr/local/nagios/libexec/eventhandlers
+sudo chown -R nagios:nagios /usr/local/nagios/libexec/eventhandlers
 
 cd ..
 
@@ -223,18 +225,18 @@ sudo sh -c 'cp /usr/local/nagios/etc/cgi.cfg /usr/local/nagios/etc/cgi.cfg_bak ;
 
 sudo sh -c 'cp /usr/local/nagios/etc/objects/localhost.cfg /usr/local/nagios/etc/objects/localhost.cfg_bak ; sed "s/check_local_users\!20\!50/check_local_users\!2\!5/g" /usr/local/nagios/etc/objects/localhost.cfg_bak > /usr/local/nagios/etc/objects/localhost.cfg'
 
-mkdir -p /usr/local/nagios/etc/servers
+sudo mkdir -p /usr/local/nagios/etc/servers
 
-a2enmod rewrite
+sudo a2enmod rewrite
 
-a2enmod cgi
+sudo a2enmod cgi
 
-ln -s /etc/apache2/sites-available/nagios.conf /etc/apache2/sites-enabled/
+sudo ln -s /etc/apache2/sites-available/nagios.conf /etc/apache2/sites-enabled/
 
 sudo apt install -y libxml-xpath-perl
 
-service apache2 restart
+sudo service apache2 restart
 
-service nagios restart
+sudo service nagios restart
 
-systemctl enable nagios.service
+sudo systemctl enable nagios.service
