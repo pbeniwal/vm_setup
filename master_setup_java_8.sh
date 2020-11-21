@@ -29,6 +29,14 @@ sudo apt -y install jenkins
 
 sudo sh -c 'echo jenkins  ALL=\(ALL\) NOPASSWD:ALL >> /etc/sudoers'
 
+perl -p -i.bak -e "s{<installStateName>NEW</installStateName>}{<installStateName>RUNNING</installStateName>}" /var/lib/jenkins/config.xml
+
+sudo cp -r jenkins/plugins/*  /var/lib/jenkins/plugins/
+
+sudo cp jenkins/users/config.xml /var/lib/jenkins/users/admin_*/
+
+sudo chown -R jenkins:jenkins /var/lib/jenkins/
+
 # Installing tomcat
 
 sudo useradd -r -m -U -d /opt/tomcat -s /bin/false tomcat
