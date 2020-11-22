@@ -168,7 +168,7 @@ sudo apt update
 
 sudo apt -y install ansible
 
-# Install Puppet
+# Install Nagios
 
 sudo apt install -y build-essential apache2 php php-gd libgd-dev unzip
 
