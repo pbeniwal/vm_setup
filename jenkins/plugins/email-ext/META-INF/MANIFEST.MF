@@ -2,13 +2,13 @@ Manifest-Version: 1.0
 Archiver-Version: Plexus Archiver
 Created-By: Apache Maven
 Built-By: basil
-Build-Jdk: 1.8.0_272
+Build-Jdk: 1.8.0_275
 Extension-Name: email-ext
 Specification-Title: Allows to configure every aspect of email notific
  ations: when an email is sent, who should receive it and what the ema
  il says
 Implementation-Title: email-ext
-Implementation-Version: 2.79
+Implementation-Version: 2.80
 Plugin-Class: hudson.plugins.emailext.EmailExtensionPlugin
 Group-Id: org.jenkins-ci.plugins
 Short-Name: email-ext
@@ -16,7 +16,7 @@ Long-Name: Email Extension Plugin
 Url: https://github.com/jenkinsci/email-ext-plugin
 Compatible-Since-Version: 2.57.2
 Minimum-Java-Version: 1.8
-Plugin-Version: 2.79
+Plugin-Version: 2.80
 Hudson-Version: 2.164.3
 Jenkins-Version: 2.164.3
 Plugin-Dependencies: workflow-job:2.39;resolution:=optional,workflow-s
