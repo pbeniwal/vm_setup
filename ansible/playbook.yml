@@ -1,0 +1,51 @@
+---
+- hosts: localhost
+  become: true
+  tasks:
+  - name: Install java
+    apt:  update_cache=yes name=openjdk-8-jdk state=present
+  - name: Install maven
+    apt:  name=maven state=present
+
+  - name: ensure the jenkins apt repository key is installed
+    apt_key: url=https://pkg.jenkins.io/debian-stable/jenkins.io.key state=present
+  - name: ensure the repository is configured
+    apt_repository: repo='deb https://pkg.jenkins.io/debian-stable binary/' state=present
+  - name: ensure jenkins is installed
+    apt: name=jenkins update_cache=yes
+
+  - name: Copy the plugins from the directory
+    shell: cp -r ../jenkins/plugins/*  /var/lib/jenkins/plugins/
+
+  - name: Change the config xml file
+    shell: perl -p -i.bak -e "s{<installStateName>NEW</installStateName>}{<installStateName>RUNNING</installStateName>}" /var/lib/jenkins/config.xml
+
+  - name: Copy the plugins from the directory
+    shell: cp ../jenkins/users/config.xml /var/lib/jenkins/users/admin_*/
+
+  - name: chown to username you login and chmod as required
+    file:
+      path: /var/lib/jenkins/
+      owner: jenkins
+      group: jenkins
+
+  - name: ensure jenkins is running
+    service: name=jenkins state=started
+
+  - name: ensure docker repository key is installed
+    apt_key:
+      url: https://download.docker.com/linux/ubuntu/gpg
+      state: present
+  - name: ensure docker registry is available
+    apt_repository: repo='deb https://download.docker.com/linux/ubuntu focal stable' state=present
+  - name: ensure docker and dependencies are installed
+    apt: name=docker-ce update_cache=yes
+  - name: ensure pip is installed
+    apt: name=python3-pip
+  - service: name=docker state=restarted
+  - name: Install Docker Module for Python
+    pip:
+      name: docker
+  roles:
+    - tomcat_install
+

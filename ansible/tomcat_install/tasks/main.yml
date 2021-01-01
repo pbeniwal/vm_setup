@@ -1,0 +1,47 @@
+---
+# tasks file for tomcat_install
+- name: add tomcat group
+  group:
+    name: tomcat
+- name: add tomcat user
+  user:
+    name: tomcat
+    group: tomcat
+    home: /opt/tomcat
+- name: download & unarchive
+  unarchive:
+    src: https://archive.apache.org/dist/tomcat/tomcat-9/v9.0.36/bin/apache-tomcat-9.0.36.tar.gz
+    dest: /opt/tomcat
+    remote_src: yes
+    extra_opts: [--strip-components=1]
+- name: Copy Tomcat service from local to remote
+  copy:
+     src: tomcat.service
+     dest: /etc/systemd/system/
+     mode: 0755
+- name: Copy server xml from files to remote
+  copy:
+     src: server.xml
+     dest: /opt/tomcat/conf/
+- name: Copy tomcat users from files to remote
+  copy:
+     src: tomcat-users.xml
+     dest: /opt/tomcat/conf/
+- name: Copy context from files to remote
+  copy:
+     src: context.xml
+     dest: /opt/tomcat/webapps/manager/META-INF/
+- name: Change ownership
+  file:
+    path: /opt/tomcat
+    owner: tomcat
+    group: tomcat
+    mode: "u+rwx,g+rx,o=rx"
+    recurse: yes
+    state: directory
+- name: Start and enable Tomcat service
+  systemd:
+    name: tomcat
+    state: started
+    enabled: true
+    daemon_reload: true
