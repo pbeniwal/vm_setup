@@ -13,7 +13,8 @@
     apt_repository: repo='deb https://pkg.jenkins.io/debian-stable binary/' state=present
   - name: ensure jenkins is installed
     apt: name=jenkins update_cache=yes
-
+  - pause:
+      minutes: 1
   - name: Copy the plugins from the directory
     shell: cp -r ../jenkins/plugins/*  /var/lib/jenkins/plugins/
 
