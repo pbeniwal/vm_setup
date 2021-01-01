@@ -46,6 +46,7 @@
   - name: Install Docker Module for Python
     pip:
       name: docker
-  roles:
-    - tomcat_install
+  - name: Execute tomcat install role
+    include_role:
+       name: tomcat_install
 
